@@ -12,10 +12,11 @@ pipeline {
                 echo "Docker build start!"
                 withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
                     sh 'docker build -t truongtranduytan1802/ci-cd .'
-                    echo "Docker build successful!"
-                    sh 'docker push truongtranduytan1802/ci-cd'
                 }
                 echo "Docker build successful!"
+                withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
+                    sh 'docker push truongtranduytan1802/ci-cd'
+                }
             }
         }
 
