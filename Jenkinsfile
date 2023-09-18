@@ -4,15 +4,20 @@ pipeline {
 
     environment {
         MYSQL_ROOT_LOGIN = credentials('mysql')
+        DOCKER_HUB_LOGIN = credentials('dockerhub')
     }
     stages {
         stage('Packaging/Pushing image') {
 
             steps {
+                echo "Login to Docker"
+                sh "docker login -u truongtranduytan@gmail.com -p ${MYSQL_ROOT_LOGIN_PSW} https://index.docker.io/v1/"
+                
                 echo "Docker build start!"
                 withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
                     sh 'docker build -t truongtranduytan1802/ci-cd .'
                 }
+                
                 echo "Docker build successful!"
                 withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
                     sh 'docker push truongtranduytan1802/ci-cd'
