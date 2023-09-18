@@ -44,12 +44,12 @@ pipeline {
         stage('Deploy Spring Boot to DEV') {
             steps {
                 echo 'Deploying and cleaning'
-                sh 'docker image pull duytan/ci-cd'
-                sh 'docker container stop duytan-ci-cd || echo "this container does not exist" '
+                sh 'docker image pull truongtranduytan1802/ci-cd'
+                sh 'docker container stop truongtranduytan1802/ci-cd || echo "this container does not exist" '
                 sh 'docker network create dev || echo "this network exists"'
                 sh 'echo y | docker container prune '
 
-                sh 'docker container run -d --rm --name duytan-ci-cd -p 8081:8080 --network dev duytan/ci-cd'
+                sh 'docker container run -d --rm --name duytan-ci-cd -p 8081:8080 --network dev truongtranduytan1802/ci-cd'
             }
         }
  
