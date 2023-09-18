@@ -3,9 +3,7 @@ pipeline {
     agent any
 
     environment {
-        MYSQL_CREDENTIALS = credentials('mysql')
-        MYSQL_ROOT_LOGIN = "${MYSQL_CREDENTIALS.username}"
-        MYSQL_ROOT_LOGIN_PSW = "${MYSQL_CREDENTIALS.password}"
+        MYSQL_ROOT_LOGIN = credentials('mysql')
     }
     stages {
 
@@ -14,7 +12,6 @@ pipeline {
                 script {                    
                     // Log the values of the variables
                     echo "MYSQL_ROOT_LOGIN: ${MYSQL_ROOT_LOGIN}"
-                    echo "MYSQL_ROOT_LOGIN_PSW: ${MYSQL_ROOT_LOGIN_PSW}"
                 }
             }
         }
