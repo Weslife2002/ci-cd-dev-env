@@ -20,8 +20,8 @@ pipeline {
 
             steps {
                 withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
-                    sh 'docker build -t duytan/ci-cd .'
-                    sh 'docker push duytan/ci-cd'
+                    sh 'docker build -t truongtranduytan1802/ci-cd .'
+                    sh 'docker push truongtranduytan1802/ci-cd'
                 }
             }
         }
