@@ -4,8 +4,8 @@ pipeline {
 
     environment {
         MYSQL_CREDENTIALS = credentials('mysql')
-        MYSQL_ROOT_LOGIN = MYSQL_CREDENTIALS.username
-        MYSQL_ROOT_LOGIN_PSW = MYSQL_CREDENTIALS.password
+        MYSQL_ROOT_LOGIN = "${MYSQL_CREDENTIALS.username}"
+        MYSQL_ROOT_LOGIN_PSW = "${MYSQL_CREDENTIALS.password}"
     }
     stages {
 
