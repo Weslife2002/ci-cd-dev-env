@@ -3,7 +3,9 @@ pipeline {
     agent any
 
     environment {
-        MYSQL_ROOT_LOGIN = credentials('mysql')
+        MYSQL_CREDENTIALS = credentials('mysql')
+        MYSQL_ROOT_LOGIN = MYSQL_CREDENTIALS.username
+        MYSQL_ROOT_LOGIN_PSW = MYSQL_CREDENTIALS.password
     }
     stages {
 
