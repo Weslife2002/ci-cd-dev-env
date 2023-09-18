@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>khalid-spring</artifactId>
+	<artifactId>duytan-ci-cd</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>khalid-spring</name>
+	<name>duytan-ci-cd</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
