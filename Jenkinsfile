@@ -6,23 +6,16 @@ pipeline {
         MYSQL_ROOT_LOGIN = credentials('mysql')
     }
     stages {
-
-        stage('Logging Variables') {
-            steps {
-                script {                    
-                    // Log the values of the variables
-                    echo "MYSQL_ROOT_LOGIN: ${MYSQL_ROOT_LOGIN}"
-                }
-            }
-        }
-
         stage('Packaging/Pushing image') {
 
             steps {
+                echo "Docker build start!"
                 withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
                     sh 'docker build -t truongtranduytan1802/ci-cd .'
+                    echo "Docker build successful!"
                     sh 'docker push truongtranduytan1802/ci-cd'
                 }
+                echo "Docker build successful!"
             }
         }
 
